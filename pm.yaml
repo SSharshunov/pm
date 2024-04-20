@@ -1,0 +1,41 @@
+---
+# some_list:
+# - d0
+# - d1
+# - d2
+plugin_dir: ./build
+plugin_option2: ./build1
+plugin_option3: ./build2
+
+plugins:
+- name: input_test
+  disabled: true
+- name: input_read_fifo
+  disabled: false
+  folder: ./videos
+  repeat: true      # - Not implemented
+  refresh: true     # - Not implemented
+- name: rtsp_server
+  disabled: false
+  port: 5554
+  username: admin
+  proto: tcp
+- name: mjpeg
+  disabled: true
+  port: 80
+  username: admin
+- name: http_server
+  disabled: true
+  port: 80
+  bind_unix_socket: false
+  address: 0.0.0.0
+  uplink: false     # - unlink unix socket before bind
+  iocp: false       # - IOCP
+  max_body_size: 0  # - max body size
+  verbosity: 0      # - verbosity, enables libevent debug logging too
+
+- name: ping
+  disabled: true
+  host: google.com
+  count: 0
+plugin_option4: ./build3
